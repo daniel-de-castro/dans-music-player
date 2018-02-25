@@ -1,5 +1,5 @@
 # DansMusicPlayer
-A simple music player for .wav files made by Daniel Lopes de Castro
+A simple music player for .wav files made by Daniel Lopes de Castro.
 
 Pause icon by Hanan from flaticon.com
 
