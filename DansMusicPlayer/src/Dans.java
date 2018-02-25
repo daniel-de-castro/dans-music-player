@@ -13,8 +13,6 @@ public class Dans {
 	
 	public static void main(String[] args){
 		
-		ImageIcon icon = new ImageIcon("/src/media.images/discIcon16.png");
-		
 		JFrame loadingScreen = new JFrame("Dans music player");
 		loadingScreen.setResizable(false);
 		loadingScreen.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -29,7 +27,7 @@ public class Dans {
 		loadingScreen.add(messagePanel);
 		loadingScreen.setLocationRelativeTo(null);
 		loadingScreen.setSize(400, 100);
-		loadingScreen.setIconImage(icon.getImage());
+		//loadingScreen.setIconImage(icon.getImage());
 		loadingScreen.setVisible(true);
 		
 		try {
@@ -57,7 +55,7 @@ public class Dans {
 			warningScreen.add(warningMessagePanel);
 			warningScreen.setLocationRelativeTo(null);
 			warningScreen.setSize(400, 100);
-			warningScreen.setIconImage(icon.getImage());
+			//warningScreen.setIconImage(icon.getImage());
 			warningScreen.setVisible(true);
 			
 		}

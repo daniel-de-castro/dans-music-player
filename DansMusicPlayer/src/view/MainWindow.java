@@ -23,8 +23,6 @@ public class MainWindow extends JFrame implements Observer {
 	private ButtonListener buttonListener;
 	private CardLayout cl;
 	
-	ImageIcon icon = new ImageIcon("/src/media/images/discIcon16.png");
-	
 	private JPanel container;
 	private JPanel beginPanel;
 	private JPanel mainPanel;
@@ -63,7 +61,7 @@ public class MainWindow extends JFrame implements Observer {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		setContentPane(new Background());
-		setIconImage(icon.getImage());
+//		setIconImage(icon.getImage());
 		buttonListener = new ButtonListener(m);
 		cl = new CardLayout();
 		
