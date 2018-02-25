@@ -14,46 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>media/images/discIcon16.ico</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Downloads/discIcon16.ico</locationURI>
-		</link>
-		<link>
-			<name>media/images/discIcon16.png</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Downloads/discIcon16.png</locationURI>
-		</link>
-		<link>
-			<name>media/images/discIcon24.ico</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Downloads/discIcon24.ico</locationURI>
-		</link>
-		<link>
-			<name>media/images/discIcon24.png</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Downloads/discIcon24.png</locationURI>
-		</link>
-		<link>
-			<name>media/images/discIcon32.ico</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Downloads/discIcon32.ico</locationURI>
-		</link>
-		<link>
-			<name>media/images/discIcon32.png</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Downloads/discIcon32.png</locationURI>
-		</link>
-		<link>
-			<name>media/images/discIcon64.ico</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Downloads/discIcon64.ico</locationURI>
-		</link>
-		<link>
-			<name>media/images/discIcon64.png</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Downloads/discIcon64.png</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
