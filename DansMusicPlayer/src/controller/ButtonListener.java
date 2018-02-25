@@ -16,19 +16,22 @@ public class ButtonListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()){
-		case "play button":
+		case "begin ac":
+			model.begin();
+			break;
+		case "play ac":
 			model.play();
 			break;
-		case "pause button":
+		case "pause ac":
 			model.pause();
 			break;
-		case "prev button":
+		case "prev ac":
 			model.prev();
 			break;
-		case "next button":
+		case "next ac":
 			model.next();
 			break;
-		case "shuffle button":
+		case "shuffle ac":
 			model.shuffle();
 			break;
 		}

@@ -1,13 +1,17 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import controller.ButtonListener;
 import model.Model;
@@ -16,11 +20,23 @@ public class MainWindow extends JFrame implements Observer {
 	
 	private Model model;
 	private ButtonListener buttonListener;
+	private CardLayout cl;
 	
 	private JPanel container;
+	private JPanel beginPanel;
+	private JPanel mainPanel;
+	private JPanel buttonPanel;
 	
-	private JButton button1;
-	private JButton button2;
+	private JLabel nowPlayingLabel;
+	private JScrollPane playlistScroller;
+	private JTextArea playlistDisplay;
+	
+	private JButton beginButton;
+	private JButton playButton;
+	private JButton pauseButton;
+	private JButton prevButton;
+	private JButton nextButton;
+	private JButton shuffleButton;
 	
 //	public class Background extends JComponent{
 //		private BufferedImage image;
@@ -46,28 +62,51 @@ public class MainWindow extends JFrame implements Observer {
 //		setContentPane(new Background());
 //		setIconImage(new ImageIcon("filepath after project name").getImage());
 		buttonListener = new ButtonListener(m);
+		cl = new CardLayout();
 		
 		//============================ Text Related Stuff =============================
+		
+		
 
 		//================================ Buttons ====================================
-				
-		button1 = new JButton("first");
-		button1.addActionListener(buttonListener);
-		button1.setActionCommand("do func 1");
 		
-		button2 = new JButton("second");
-		button2.addActionListener(buttonListener);
-		button2.setActionCommand("do func 2");
+		beginButton = new JButton("BEGIN");
+		playButton.addActionListener(buttonListener);
+		playButton.setActionCommand("begin ac");
+		
+		playButton = new JButton();
+		playButton.addActionListener(buttonListener);
+		playButton.setActionCommand("play ac");
+		
+		pauseButton = new JButton();
+		pauseButton.addActionListener(buttonListener);
+		pauseButton.setActionCommand("pause ac");
+		
+		prevButton = new JButton();
+		prevButton.addActionListener(buttonListener);
+		prevButton.setActionCommand("prev ac");
+		
+		nextButton = new JButton();
+		nextButton.addActionListener(buttonListener);
+		nextButton.setActionCommand("next ac");
+		
+		shuffleButton = new JButton();
+		shuffleButton.addActionListener(buttonListener);
+		shuffleButton.setActionCommand("shuffle ac");
 		
 		//================================= Other =====================================
 
 		//================================= Panels ====================================
 		
+		beginPanel = new JPanel(new BorderLayout());
+		beginPanel.add(beginButton);
+		
+		mainPanel = new JPanel(new GridLayout(2, 2));
+		
 		container = new JPanel();
-		container.setLayout(new BorderLayout());
-		//container.setLayout(new GridLayout(rows, cols));
-		container.add(button1, BorderLayout.PAGE_START);
-		container.add(button2, BorderLayout.PAGE_END);
+		container.setLayout(cl);
+		container.add(mainPanel, "2");
+		container.add(beginPanel, "1");
 
 		//============================= Layout Manager ================================
 		
@@ -85,18 +124,22 @@ public class MainWindow extends JFrame implements Observer {
 		
 		switch (command){
 		case "1":
-			System.out.println("play pressed");
+			System.out.println("begun");
+			cl.show(container, "1");
 			break;
 		case "2":
-			System.out.println("pause pressed");
+			System.out.println("play pressed");
 			break;
 		case "3":
-			System.out.println("prev pressed");
+			System.out.println("pause pressed");
 			break;
 		case "4":
-			System.out.println("next pressed");
+			System.out.println("prev pressed");
 			break;
 		case "5":
+			System.out.println("next pressed");
+			break;
+		case "6":
 			System.out.println("shuffle pressed");
 			break;
 		}

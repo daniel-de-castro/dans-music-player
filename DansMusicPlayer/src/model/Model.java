@@ -31,16 +31,21 @@ public class Model extends Observable{
 		
 	}
 	
+	public void begin(){
+		setChanged();
+		notifyObservers("1");
+	}
+	
 	public void play(){
 		songs[index].play();
 		setChanged();
-		notifyObservers("1");
+		notifyObservers("2");
 	}
 	
 	public void pause(){
 		songs[index].stop();
 		setChanged();
-		notifyObservers("2");
+		notifyObservers("3");
 	}
 	
 	public void prev(){
@@ -50,7 +55,7 @@ public class Model extends Observable{
 		songs[index].rewind();
 		songs[index].play();
 		setChanged();
-		notifyObservers("3");
+		notifyObservers("4");
 	}
 	
 	public void next(){
@@ -60,7 +65,7 @@ public class Model extends Observable{
 		songs[index].rewind();
 		songs[index].play();
 		setChanged();
-		notifyObservers("4");
+		notifyObservers("5");
 	}
 	
 	public void shuffle(){
@@ -71,7 +76,7 @@ public class Model extends Observable{
 		songs[index].rewind();
 		songs[index].play();
 		setChanged();
-		notifyObservers("5");
+		notifyObservers("6");
 	}
 	
 	//================================================
