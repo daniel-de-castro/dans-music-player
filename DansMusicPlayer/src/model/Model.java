@@ -52,6 +52,7 @@ public class Model extends Observable{
 		songs[index].stop();
 		index--;
 		if (index < 0) index = playlistLength - 1;
+		nowPlaying = names.get(index);
 		songs[index].rewind();
 		songs[index].play();
 		setChanged();
@@ -62,6 +63,7 @@ public class Model extends Observable{
 		songs[index].stop();
 		index++;
 		if (index > playlistLength - 1) index = 0;
+		nowPlaying = names.get(index);
 		songs[index].rewind();
 		songs[index].play();
 		setChanged();
@@ -73,6 +75,7 @@ public class Model extends Observable{
 		index = getRandom();
 		if (index < 0) index = playlistLength - 1;
 		else if (index > playlistLength - 1) index = 0;
+		nowPlaying = names.get(index);
 		songs[index].rewind();
 		songs[index].play();
 		setChanged();

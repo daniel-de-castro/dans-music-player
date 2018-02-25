@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -20,7 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
-
 import controller.ButtonListener;
 import model.Model;
 
@@ -46,29 +46,12 @@ public class MainWindow extends JFrame implements Observer {
 	private JButton nextButton;
 	private JButton shuffleButton;
 	
-	public class BeginBackground extends JComponent{
+	public class Background extends JComponent{
 		private BufferedImage image;
 		
-		public BeginBackground(){
+		public Background(){
 			try {
-				image = javax.imageio.ImageIO.read(new File("media/images/beginBackground.png"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	    @Override
-	    protected void paintComponent(Graphics g) {
-	        super.paintComponent(g);
-	        g.drawImage(image, 0, 0, this);
-	    }
-	}
-	
-	public class MainBackground extends JComponent{
-		private BufferedImage image;
-		
-		public MainBackground(){
-			try {
-				image = javax.imageio.ImageIO.read(new File("media/images/mainBackground.png"));
+				image = javax.imageio.ImageIO.read(new File("media/images/background.png"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -84,6 +67,7 @@ public class MainWindow extends JFrame implements Observer {
 		super("Dans music player");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setContentPane(new Background());
 //		setIconImage(icon.getImage());
 		buttonListener = new ButtonListener(m);
 		cl = new CardLayout();
@@ -93,16 +77,18 @@ public class MainWindow extends JFrame implements Observer {
 		nowPlayingLabel = new JLabel("Welcome to Dans music player");
 		nowPlayingLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		nowPlayingLabel.setFont(new Font("Futura", Font.PLAIN, 16));
-		nowPlayingLabel.setBackground(Color.BLACK);
-		nowPlayingLabel.setForeground(Color.CYAN);
+		nowPlayingLabel.setForeground(new Color(0, 225, 255));
+		nowPlayingLabel.setOpaque(false);
 		
 		playlistScroller = new JScrollPane();
 		playlistDisplay = new JTextArea("PLAYLIST\n\n");
-		nowPlayingLabel.setFont(new Font("Futura", Font.PLAIN, 13));
-		for (String n : model.getNames()){
+		playlistDisplay.setFont(new Font("Futura", Font.PLAIN, 13));
+		for (String n : m.getNames()){
 			playlistDisplay.append(n + "\n");
 		}
+		playlistDisplay.setOpaque(false);
 		playlistScroller.setViewportView(playlistDisplay);
+		playlistScroller.setOpaque(false);
 
 		//================================ Buttons ====================================
 		
@@ -110,23 +96,23 @@ public class MainWindow extends JFrame implements Observer {
 		beginButton.addActionListener(buttonListener);
 		beginButton.setActionCommand("begin ac");
 		
-		playButton = new JButton();
+		playButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
 		playButton.addActionListener(buttonListener);
 		playButton.setActionCommand("play ac");
 		
-		pauseButton = new JButton();
+		pauseButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
 		pauseButton.addActionListener(buttonListener);
 		pauseButton.setActionCommand("pause ac");
 		
-		prevButton = new JButton();
+		prevButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
 		prevButton.addActionListener(buttonListener);
 		prevButton.setActionCommand("prev ac");
 		
-		nextButton = new JButton();
+		nextButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
 		nextButton.addActionListener(buttonListener);
 		nextButton.setActionCommand("next ac");
 		
-		shuffleButton = new JButton();
+		shuffleButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
 		shuffleButton.addActionListener(buttonListener);
 		shuffleButton.setActionCommand("shuffle ac");
 		
@@ -136,6 +122,7 @@ public class MainWindow extends JFrame implements Observer {
 		
 		beginPanel = new JPanel();
 		beginPanel.add(beginButton);
+		beginPanel.setOpaque(false);
 		
 		buttonPanel = new JPanel(new GridLayout(3, 2));
 		buttonPanel.add(playButton);
@@ -143,16 +130,19 @@ public class MainWindow extends JFrame implements Observer {
 		buttonPanel.add(prevButton);
 		buttonPanel.add(nextButton);
 		buttonPanel.add(shuffleButton);
+		buttonPanel.setOpaque(false);
 		
 		mainPanel = new JPanel(new GridLayout(2, 2));
 		mainPanel.add(nowPlayingLabel);
 		mainPanel.add(buttonPanel);
 		mainPanel.add(playlistScroller);
+		mainPanel.setOpaque(false);
 		
 		container = new JPanel();
 		container.setLayout(cl);
 		container.add(beginPanel, "1");
 		container.add(mainPanel, "2");
+		container.setOpaque(false);
 
 		//============================= Layout Manager ================================
 		
@@ -167,7 +157,7 @@ public class MainWindow extends JFrame implements Observer {
 	public void update(Observable o, Object arg) {
 		model = (Model) o;
         String command = (String) arg;
-		nowPlayingLabel.setText("Now playing: " + model.getNowPlaying());
+		if (!command.equals("1")) nowPlayingLabel.setText("Now playing: " + model.getNowPlaying());
 		switch (command){
 		case "1":
 			System.out.println("begun");
