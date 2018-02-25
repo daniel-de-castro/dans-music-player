@@ -23,7 +23,7 @@ public class MainWindow extends JFrame implements Observer {
 	private ButtonListener buttonListener;
 	private CardLayout cl;
 	
-	ImageIcon icon = new ImageIcon(MainWindow.class.getResource("/media/images/discIcon16.png"));
+	ImageIcon icon = new ImageIcon("/src/media/images/discIcon16.png");
 	
 	private JPanel container;
 	private JPanel beginPanel;
@@ -74,8 +74,8 @@ public class MainWindow extends JFrame implements Observer {
 		//================================ Buttons ====================================
 		
 		beginButton = new JButton("BEGIN");
-		playButton.addActionListener(buttonListener);
-		playButton.setActionCommand("begin ac");
+		beginButton.addActionListener(buttonListener);
+		beginButton.setActionCommand("begin ac");
 		
 		playButton = new JButton();
 		playButton.addActionListener(buttonListener);
@@ -115,7 +115,7 @@ public class MainWindow extends JFrame implements Observer {
 		
 		setLayout(new BorderLayout());
         add(container, BorderLayout.CENTER);
-        setSize(1200, 741);
+        setSize(1000, 618);
         setLocationRelativeTo(null);
 		
 	}
