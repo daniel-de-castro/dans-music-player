@@ -95,26 +95,42 @@ public class MainWindow extends JFrame implements Observer {
 		beginButton = new JButton("Begin");
 		beginButton.addActionListener(buttonListener);
 		beginButton.setActionCommand("begin ac");
+		beginButton.setOpaque(false);
 		
-		playButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
+		playButton = new JButton(new ImageIcon("media/images/playIcon.png"));
 		playButton.addActionListener(buttonListener);
 		playButton.setActionCommand("play ac");
+		playButton.setOpaque(false);
+		playButton.setContentAreaFilled(false);
+		playButton.setBorderPainted(false);
 		
-		pauseButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
+		pauseButton = new JButton(new ImageIcon("media/images/pauseIcon.png"));
 		pauseButton.addActionListener(buttonListener);
 		pauseButton.setActionCommand("pause ac");
+		pauseButton.setOpaque(false);
+		pauseButton.setContentAreaFilled(false);
+		pauseButton.setBorderPainted(false);
 		
-		prevButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
+		prevButton = new JButton(new ImageIcon("media/images/leftIcon.png"));
 		prevButton.addActionListener(buttonListener);
 		prevButton.setActionCommand("prev ac");
+		prevButton.setOpaque(false);
+		prevButton.setContentAreaFilled(false);
+		prevButton.setBorderPainted(false);
 		
-		nextButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
+		nextButton = new JButton(new ImageIcon("media/images/rightIcon.png"));
 		nextButton.addActionListener(buttonListener);
 		nextButton.setActionCommand("next ac");
+		nextButton.setOpaque(false);
+		nextButton.setContentAreaFilled(false);
+		nextButton.setBorderPainted(false);
 		
-		shuffleButton = new JButton(new ImageIcon(getClass().getClassLoader().getResource("media/images/playIcon.png")));
+		shuffleButton = new JButton(new ImageIcon("media/images/shuffleIcon.png"));
 		shuffleButton.addActionListener(buttonListener);
 		shuffleButton.setActionCommand("shuffle ac");
+		shuffleButton.setOpaque(false);
+		shuffleButton.setContentAreaFilled(false);
+		shuffleButton.setBorderPainted(false);
 		
 		//================================= Other =====================================
 
