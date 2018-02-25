@@ -2,17 +2,24 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 import controller.ButtonListener;
 import model.Model;
@@ -39,39 +46,67 @@ public class MainWindow extends JFrame implements Observer {
 	private JButton nextButton;
 	private JButton shuffleButton;
 	
-//	public class Background extends JComponent{
-//		private BufferedImage image;
-//		
-//		public Background(){
-//			try {
-//				image = javax.imageio.ImageIO.read(new File("filepath after project name"));
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	    @Override
-//	    protected void paintComponent(Graphics g) {
-//	        super.paintComponent(g);
-//	        g.drawImage(image, 0, 0, this);
-//	    }
-//	}
+	public class BeginBackground extends JComponent{
+		private BufferedImage image;
+		
+		public BeginBackground(){
+			try {
+				image = javax.imageio.ImageIO.read(new File("media/images/beginBackground.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	    @Override
+	    protected void paintComponent(Graphics g) {
+	        super.paintComponent(g);
+	        g.drawImage(image, 0, 0, this);
+	    }
+	}
+	
+	public class MainBackground extends JComponent{
+		private BufferedImage image;
+		
+		public MainBackground(){
+			try {
+				image = javax.imageio.ImageIO.read(new File("media/images/mainBackground.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	    @Override
+	    protected void paintComponent(Graphics g) {
+	        super.paintComponent(g);
+	        g.drawImage(image, 0, 0, this);
+	    }
+	}
 	
 	public MainWindow(Model m){
 		super("Dans music player");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		setContentPane(new Background());
 //		setIconImage(icon.getImage());
 		buttonListener = new ButtonListener(m);
 		cl = new CardLayout();
 		
 		//============================ Text Related Stuff =============================
 		
+		nowPlayingLabel = new JLabel("Welcome to Dans music player");
+		nowPlayingLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		nowPlayingLabel.setFont(new Font("Futura", Font.PLAIN, 16));
+		nowPlayingLabel.setBackground(Color.BLACK);
+		nowPlayingLabel.setForeground(Color.CYAN);
 		
+		playlistScroller = new JScrollPane();
+		playlistDisplay = new JTextArea("PLAYLIST\n\n");
+		nowPlayingLabel.setFont(new Font("Futura", Font.PLAIN, 13));
+		for (String n : model.getNames()){
+			playlistDisplay.append(n + "\n");
+		}
+		playlistScroller.setViewportView(playlistDisplay);
 
 		//================================ Buttons ====================================
 		
-		beginButton = new JButton("BEGIN");
+		beginButton = new JButton("Begin");
 		beginButton.addActionListener(buttonListener);
 		beginButton.setActionCommand("begin ac");
 		
@@ -99,15 +134,25 @@ public class MainWindow extends JFrame implements Observer {
 
 		//================================= Panels ====================================
 		
-		beginPanel = new JPanel(new BorderLayout());
+		beginPanel = new JPanel();
 		beginPanel.add(beginButton);
 		
+		buttonPanel = new JPanel(new GridLayout(3, 2));
+		buttonPanel.add(playButton);
+		buttonPanel.add(pauseButton);
+		buttonPanel.add(prevButton);
+		buttonPanel.add(nextButton);
+		buttonPanel.add(shuffleButton);
+		
 		mainPanel = new JPanel(new GridLayout(2, 2));
+		mainPanel.add(nowPlayingLabel);
+		mainPanel.add(buttonPanel);
+		mainPanel.add(playlistScroller);
 		
 		container = new JPanel();
 		container.setLayout(cl);
-		container.add(mainPanel, "2");
 		container.add(beginPanel, "1");
+		container.add(mainPanel, "2");
 
 		//============================= Layout Manager ================================
 		
@@ -122,11 +167,11 @@ public class MainWindow extends JFrame implements Observer {
 	public void update(Observable o, Object arg) {
 		model = (Model) o;
         String command = (String) arg;
-		
+		nowPlayingLabel.setText("Now playing: " + model.getNowPlaying());
 		switch (command){
 		case "1":
 			System.out.println("begun");
-			cl.show(container, "1");
+			cl.show(container, "2");
 			break;
 		case "2":
 			System.out.println("play pressed");
