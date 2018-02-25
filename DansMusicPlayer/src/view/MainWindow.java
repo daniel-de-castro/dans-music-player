@@ -3,9 +3,11 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+
 import controller.ButtonListener;
 import model.Model;
 
@@ -68,7 +71,7 @@ public class MainWindow extends JFrame implements Observer {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(new Background());
-//		setIconImage(icon.getImage());
+		setIconImage(new ImageIcon("media/images/discIcon16.png/").getImage());
 		buttonListener = new ButtonListener(m);
 		cl = new CardLayout();
 		
@@ -95,6 +98,7 @@ public class MainWindow extends JFrame implements Observer {
 		beginButton = new JButton("Begin");
 		beginButton.addActionListener(buttonListener);
 		beginButton.setActionCommand("begin ac");
+		beginButton.setBounds(447, 300, 100, 25);
 		beginButton.setOpaque(false);
 		
 		playButton = new JButton(new ImageIcon("media/images/playIcon.png"));
@@ -136,7 +140,7 @@ public class MainWindow extends JFrame implements Observer {
 
 		//================================= Panels ====================================
 		
-		beginPanel = new JPanel();
+		beginPanel = new JPanel(null);
 		beginPanel.add(beginButton);
 		beginPanel.setOpaque(false);
 		
