@@ -1,19 +1,21 @@
-import view.MainWindow;
-
 import java.awt.BorderLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import model.Model;
+import view.MainWindow;
 
 public class Dans {
 	
 	public static void main(String[] args){
 		
-		JFrame loadingScreen = new JFrame("title");
+		ImageIcon icon = new ImageIcon("media/images/discIcon16.png");
+		
+		JFrame loadingScreen = new JFrame("Dans music player");
 		loadingScreen.setResizable(false);
 		loadingScreen.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
@@ -21,12 +23,13 @@ public class Dans {
 		messagePanel.setLayout(new BorderLayout());
 		
 		JLabel loadingMessage = new JLabel("Loading...");
+		loadingMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		messagePanel.add(loadingMessage, BorderLayout.PAGE_START);
 		
 		loadingScreen.add(messagePanel);
 		loadingScreen.setLocationRelativeTo(null);
 		loadingScreen.setSize(400, 100);
-//		loadingScreen.setIconImage(new ImageIcon("filepath after project name").getImage());
+		loadingScreen.setIconImage(new ImageIcon("media/images/discIcon16.ico").getImage());
 		loadingScreen.setVisible(true);
 		
 		try {
@@ -37,23 +40,24 @@ public class Dans {
 			loadingScreen.setVisible(false);
 			view.setVisible(true);
 			
-		} catch (Throwable e){
+		} catch (/*Throwable*/ IndexOutOfBoundsException e){
 			
 			loadingScreen.setVisible(false);
-			JFrame warningScreen = new JFrame("title");
+			JFrame warningScreen = new JFrame("Dans music player");
 			loadingScreen.setResizable(false);
 			loadingScreen.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			
 			JPanel warningMessagePanel = new JPanel();
 			warningMessagePanel.setLayout(new BorderLayout());
 			
-			JLabel warningMessage = new JLabel("There seems to be no connection.");
+			JLabel warningMessage = new JLabel("Your playlist is empty!");
+			warningMessage.setHorizontalAlignment(SwingConstants.CENTER);
 			warningMessagePanel.add(warningMessage, BorderLayout.CENTER);
 			
 			warningScreen.add(warningMessagePanel);
 			warningScreen.setLocationRelativeTo(null);
 			warningScreen.setSize(400, 100);
-//			warningScreen.setIconImage(new ImageIcon("filepath after project name").getImage());
+			warningScreen.setIconImage(icon.getImage()); //"media/images/discIcon16.ico").getImage());
 			warningScreen.setVisible(true);
 			
 		}
