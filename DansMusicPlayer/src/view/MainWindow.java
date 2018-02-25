@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +22,8 @@ public class MainWindow extends JFrame implements Observer {
 	private Model model;
 	private ButtonListener buttonListener;
 	private CardLayout cl;
+	
+	ImageIcon icon = new ImageIcon(MainWindow.class.getResource("/media/images/discIcon16.png"));
 	
 	private JPanel container;
 	private JPanel beginPanel;
@@ -60,7 +63,7 @@ public class MainWindow extends JFrame implements Observer {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		setContentPane(new Background());
-//		setIconImage(new ImageIcon("filepath after project name").getImage());
+		setIconImage(icon.getImage());
 		buttonListener = new ButtonListener(m);
 		cl = new CardLayout();
 		
