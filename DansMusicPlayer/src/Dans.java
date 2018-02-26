@@ -19,14 +19,14 @@ public class Dans {
 		JFrame loadingScreen = new JFrame("Dans music player");
 		loadingScreen.setResizable(false);
 		loadingScreen.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		
+
 		JPanel messagePanel = new JPanel();
 		messagePanel.setLayout(new BorderLayout());
-		
+
 		JLabel loadingMessage = new JLabel("Loading...");
 		loadingMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		messagePanel.add(loadingMessage, BorderLayout.PAGE_START);
-		
+
 		loadingScreen.add(messagePanel);
 		loadingScreen.setLocationRelativeTo(null);
 		loadingScreen.setSize(400, 100);
