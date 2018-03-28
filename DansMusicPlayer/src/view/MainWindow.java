@@ -178,27 +178,7 @@ public class MainWindow extends JFrame implements Observer {
 		model = (Model) o;
         String command = (String) arg;
 		if (!command.equals("1")) nowPlayingLabel.setText("Now playing: " + model.getNowPlaying());
-		switch (command){
-		case "1":
-			System.out.println("begun");
-			cl.show(container, "2");
-			break;
-		case "2":
-			System.out.println("play pressed");
-			break;
-		case "3":
-			System.out.println("pause pressed");
-			break;
-		case "4":
-			System.out.println("prev pressed");
-			break;
-		case "5":
-			System.out.println("next pressed");
-			break;
-		case "6":
-			System.out.println("shuffle pressed");
-			break;
-		}
+		else cl.show(container, "2");
 	}
 
 }
