@@ -9,7 +9,6 @@ public class Playlist{
 	public File[] getPlaylist(){
 		File folder = new File("media/audio");
 		files = folder.listFiles();
-		System.out.println("Files in the folder: " + files);
 		return files;
 	}
 
